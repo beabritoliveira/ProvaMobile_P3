@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import Card from './src/components/Cartao';
 import { useEffect, useState } from 'react';
 
@@ -21,13 +21,15 @@ export default function App() {
 
 
   return (
-    <ScrollView horizontal>
-      {filmes.length > 0 ? //checa se o vetor tá preenchido
-      filmes.map(cinema => 
-      <Card props = {cinema}/>)
-      :<ActivityIndicator/>}
-      <StatusBar style="auto" />
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView horizontal>
+        {filmes.length > 0 ? //checa se o vetor tá preenchido
+        filmes.map(cinema => 
+        <Card key={cinema.id} props = {cinema}/>)
+        :<ActivityIndicator/>}
+        <StatusBar style="auto" />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
